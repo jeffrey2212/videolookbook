@@ -12,14 +12,14 @@ def resize_and_center_image(image_clip, target_resolution):
     new_clip = new_clip.set_position(('center', 'center'))
     return new_clip
 
-def create_video_slideshow(image_files, output_path, image_duration=3, resolution=(1920, 1080), transition_duration=1):
+def create_video_slideshow(image_files, output_path, image_duration=5, resolution=(1920, 1080), transition_duration=2):
     
     clips = [resize_and_center_image(ImageClip(img_path).set_duration(image_duration), resolution) for img_path in image_files]
 
     final_clips = []
     for i in range(len(clips) - 1):
         clip1 = clips[i]
-        clip2 = clips[i+1].fadein(transition_duration).set_start(clip1.duration - transition_duration)
+        clip2 = clips[i+1].set_start(clip1.duration - transition_duration).crossfadein(transition_duration)
         final_clips.append(CompositeVideoClip([clip1, clip2]))
 
     final_clips.append(fadeout(clips[-1], transition_duration))

@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description='Add signature and create a video slideshow.')
     parser.add_argument('-input', help='Input folder containing images', default='./input/')
     parser.add_argument('-output', help='Output folder for the signed images and video', default='./output/')
-    parser.add_argument('-duration', help='Duration of each image in the video slideshow (default: 3 seconds)', default=3, type=int)
+    parser.add_argument('-duration', help='Duration of each image in the video slideshow (default: 3 seconds)', default=5, type=int)
     parser.add_argument('-resolution', help='Resolution of the video slideshow: "HD" or "4K" (default: "HD")', default='HD', choices=['HD', '4K'])
     args = parser.parse_args()
 
